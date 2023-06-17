@@ -3,6 +3,12 @@
     "url": "https://github.com/crehmann/TPS42",
     "maintainer": "crehmann",
     "diode_direction": "COL2ROW",
+    "manufacturer": "crehmann",
+    "usb": {
+        "vid": "0xFEED",
+        "pid": "0xB077",
+        "device_version": "0.0.1"
+    },
     "matrix_pins": {
         "cols": ["B1", "B3", "F7", "B6", "B5", "B4"],
         "rows": ["F4", "F5", "F6", "B2"]
