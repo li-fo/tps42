@@ -29,3 +29,15 @@
 #define PS2_MOUSE_SCROLL_DIVISOR_H 4 
 #define PS2_MOUSE_SCROLL_DIVISOR_V 4 
 #endif
+
+// caps word 
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+
+/* Use I2C or Serial, not both */
+#define USE_SERIAL
+// #define USE_I2C
+
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 2000
+
+#define EE_HANDS
