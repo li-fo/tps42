@@ -49,3 +49,6 @@
 #define PS2_INT_VECT   INT6_vect
 #define PS2_MOUSE_ROTATE 90 /* Compensate for East-facing device orientation. */
 #endif
+
+
+#define PS2_MOUSE_USE_REMOTE_MODE
