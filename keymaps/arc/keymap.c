@@ -59,20 +59,10 @@ enum layers {
 #define UC_TL2 LT(NAVR, KC_ENT)
 #define UC_TL3 LT(NUMR, KC_ESC)
 
-#define UC_TR3 LT(FUNL, KC_BTN1)
-#define UC_TR2 LT(SYMB, KC_SPC)
+
+#define UC_TR3 LT(SYMB, KC_BTN1)
+#define UC_TR2 LT(FUNL, KC_SPC)
 #define UC_TR1 KC_DEL
-
-
-
-// Thumbcluster crehmann 
-// #define UC_TL1 CTL_ESC
-// #define UC_TL2 LT(NAVR, KC_SPC)
-// #define UC_TL3 LT(NUMR, KC_TAB)
-
-// #define UC_TR3 LT(FUNL, KC_BSPC)
-// #define UC_TR2 LT(SYMB, KC_ENT)
-// #define UC_TR1 KC_DEL
 
 
 // Shortcuts
@@ -93,21 +83,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *          | TAB  |   Q  |   W  |   E  |   R  |   T  |                                               |   Y  |   U  |   I  |   O  |   P  | Bspc |      
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          ,------+------+------+------+------+------|                                               |------+------+------+------+------+------.
-//  *          | LCtrl|   A  |   S  |   D  |   F  |   G  |                                               |   H  |   J  |   K  |   L  |  ; : |      |
+//  *          | LCtrl|   A  |   S  |   D  |   F  |   G  |                                               |   H  |   J  |   K  |   L  |  ; : |  '"  |
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          |------+------+------+------+------+------|                                               |------+------+------+------+------+------|
 //  *          |LShift|   Z  |   X  |   C  |   F  |   B  |                                               |   N  |   M  |  , < |  . > |  / ? |RShift|
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          `----------------------------------+------+-------------.                   ,-------------+------+----------------------------------'
-//  *                                             |      | Enter| ESC  |                   |  BTN1| Space| BTN2 |
-//  *                                             | FUNL | NAVR | NUMR |                   |      | SYML |      |
+//  *                                             | LALT | Enter| ESC  |                   |  BTN1| Space| BTN2 |
+//  *                                             | BTN3 | NAVR | NUMR |                   |      | FUNL |      |
 //  *                                             `--------------------'                   `--------------------'
 //  */
     [_BASE] = LAYOUT(
       KC_TAB, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                                        KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_BSPC,
-      KC_LCTL, KC_A  , KC_S  , KC_D  , KC_F  , KC_G   ,                                        KC_H   , KC_J  , KC_K  , KC_L  , KC_SCLN, ,
+      KC_LCTL, KC_A  , KC_S  , KC_D  , KC_F  , KC_G   ,                                        KC_H   , KC_J  , KC_K  , KC_L  , KC_SCLN, KC_QUOTE,
       KC_LSFT, KC_Z   , KC_X , KC_C   , KC_V   , KC_B   ,                                        KC_N   , KC_M   , KC_COMMA, KC_DOT, KC_SLSH, KC_RSFT  ,
-                                                   UC_TL1, UC_TL2 , UC_TL3 ,    KC_BTN1, UC_TR2, KC_BTN2
+                                                   LALT_T(KC_ESC), UC_TL2 , UC_TL3 ,    KC_BTN1, UC_TR2, KC_BTN2
     ),
 
 // /*
@@ -117,27 +107,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *          |      |      | Mute | VolDn| VolDn|      |                                               | Home | End  |  ↑   |Print |      |      |
 //  *          |      |      |      |      |      |      |                                               |      |      |      |Screen|      |      |
 //  *          ,------+------+------+------+------+------|                                               |------+------+------+------+------+------.
-//  *          |      | Tab  | Save |SelAll| Copy | Paste|                                               |Insert|   ←  |   ↓  |  →   |      |      |
+//  *          |  Tab |      | Save |SelAll| Copy | Paste|                                               |Insert|   ←  |   ↓  |  →   |      |      |
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          |------+------+------+------+------+------|                                               |------+------+------+------+------+------|
-//  *          |      | LWin |      | Close|  Cut | Undo |                                               | Del  | PGUP | PGDN |      |      |      |
+//  *          |LShift| LWin |      | Close|  Cut | Undo |                                               | Del  | PGUP | PGDN |      |      |RShift |
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          `----------------------------------+------+-------------.                   ,-------------+------+----------------------------------'
-//  *                                             |      |      |      |                   |Bksp  | Space| LAlt  |
+//  *                                             |      |      |      |                   |Bksp  | Space| LAlt |
 //  *                                             |      |      |      |                   |      |      |      |
 //  *                                             `--------------------'                   `--------------------'
 //  */
     [_NAVR] = LAYOUT(
       _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______,                                        KC_HOME , KC_END , KC_UP, KC_PGDN, _______, _______,
-      _______, KC_TAB, LCTL(KC_S), LCTL(KC_A), LCTL(KC_C), LCTL(KC_V),                                        KC_INSERT, KC_LEFT, KC_DOWN  , KC_RGHT,_______ , _______,
-      _______, KC_LGUI, _______, LCTL(KC_W), LCTL(KC_X), LCTL(KC_Z),                                        KC_DELETE, KC_PGUP, KC_PGDN, _______, _______ , _______,
+      KC_TAB, _______, LCTL(KC_S), LCTL(KC_A), LCTL(KC_C), LCTL(KC_V),                                        KC_INSERT, KC_LEFT, KC_DOWN  , KC_RGHT,_______ , _______,
+      KC_LSFT, KC_LGUI, _______, LCTL(KC_W), LCTL(KC_X), LCTL(KC_Z),                                        KC_DELETE, KC_PGUP, KC_PGDN, _______, _______ , KC_RSFT,
                                                    _______, _______, _______,    KC_BSPC, KC_SPACE , KC_LALT
     ),
 // --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 // /*
-//  * Symbol Layer (Right)
+//  * Number Layer (Right) and num symbol
+//  *
+//  *          ,-----------------------------------------.                                               ,-----------------------------------------.
+//  *          |  ~   | \    |  (   |  )   |      |      |                                               |   +  |   7  |   8  |   9  |  0   |      |
+//  *          |  `   |      |      |      |      |      |                                               |   =  |      |      |      |      |      |
+//  *          ,------+------+------+------+------+------|                                               |------+------+------+------+------+------.
+//  *          |      |      |   %  |   ^  |   &  |   *  |                                               |   +  |   4  |   5  |  6   |  /   |   *  |
+//  *          |  ~   |  |   |      |      |      |      |                                               |      |      |      |      |      |      |
+//  *          |------+------+------+------+------+------|                                               |------+------+------+------+------+------|
+//  *          |      |      |   !  |   @  |   #  |   $  |                                               |   -  |   1  |   2  |  3   |  .   |      |
+//  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
+//  *          `----------------------------------+------+-------------.                   ,-------------+------+----------------------------------'
+//  *                                             |      |      |      |                   | Bksp | Enter|      |
+//  *                                             |      |      |      |                   |      |      |      |
+//  *                                             `--------------------'                   `--------------------'
+//  */
+    [_NUMR] = LAYOUT(
+      KC_GRAVE, KC_BSLS, KC_LPRN, KC_RPRN, _______, _______,                                        KC_EQUAL, KC_7   , KC_8   , KC_9   , KC_0, _______,
+      LSFT(KC_GRAVE), LSFT(KC_BSLS), KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR,                                        KC_KP_PLUS, KC_4   , KC_5   , KC_6   , KC_SLASH, KC_KP_ASTERISK,
+      _______, _______, KC_EXLM, KC_AT  , KC_HASH, KC_DLR ,                                        KC_KP_MINUS   , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
+                                                   _______, _______, _______,    KC_BSPC, KC_ENT , _______ 
+    ),
+
+
+// /*
+//  * Symbol Layer (Right) / not using...
 //  
 //  *          ,-----------------------------------------.                                               ,-----------------------------------------.
 //  *          |      |   `  |   ~  |   |  |   \  |      |                                               |      |   /  |   +  |   =  |   ?  |      |
@@ -161,40 +176,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 // /*
-//  * Number Layer (Right)
+//  * Function Layer (Left) and symbol
 //  *
 //  *          ,-----------------------------------------.                                               ,-----------------------------------------.
-//  *          |  ~   | \    |  (   |  )   |      |      |                                               |   +  |   7  |   8  |   9  |  0   |      |
-//  *          |  `   |      |      |      |      |      |                                               |   =  |      |      |      |      |      |
-//  *          ,------+------+------+------+------+------|                                               |------+------+------+------+------+------.
-//  *          |      |      |   %  |   ^  |   &  |   *  |                                               |   +  |   4  |   5  |  6   |  /   |   *  |
-//  *          |  ~   |  |   |      |      |      |      |                                               |      |      |      |      |      |      |
-//  *          |------+------+------+------+------+------|                                               |------+------+------+------+------+------|
-//  *          |      |      |   !  |   @  |   #  |   $  |                                               |   -  |   1  |   2  |  3   |  .   |      |
-//  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
-//  *          `----------------------------------+------+-------------.                   ,-------------+------+----------------------------------'
-//  *                                             |      |      |      |                   | Bksp | Enter|      |
-//  *                                             |      |      |      |                   |      |      |      |
-//  *                                             `--------------------'                   `--------------------'
-//  */
-    [_NUMR] = LAYOUT(
-      KC_GRAVE, KC_BSLS, KC_LPRN, KC_RPRN, _______, _______,                                        KC_EQUAL, KC_7   , KC_8   , KC_9   , KC_0, _______,
-      LSFT(KC_GRAVE), LSFT(KC_BSLS), KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR,                                        KC_KP_PLUS, KC_4   , KC_5   , KC_6   , KC_SLASH, KC_KP_ASTERISK,
-      _______, _______, KC_EXLM, KC_AT  , KC_HASH, KC_DLR ,                                        KC_KP_MINUS   , KC_1   , KC_2   , KC_3   , KC_DOT , _______,
-                                                   _______, _______, _______,    KC_BSPC, KC_ENT , _______ 
-    ),
-
-// /*
-//  * Function Layer (Left)
-//  *
-//  *          ,-----------------------------------------.                                               ,-----------------------------------------.
-//  *          |      |  F12 |  F7  |  F8  |  F9  | Pause|                                               |      |      |      |      |      |      |
+//  *          |      |  F1  |  F2  |  F3  |  F4  | F5   |                                               |  =   |  (   |   )  |      |      | WinL |
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          ,------+------+------+------+------+------|                                               |------+------+------+------+------+------.
-//  *          | LCtrl|  F11 |  F4  |  F5  |  F6  | PrScr|                                               |      |      |      |      |      |      |
+//  *          | LCtrl|  F6  |  F7  |  F8  |  F9  | F10  |                                               |  [   |  {   |  }   |  -   |   '  |      |
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          |------+------+------+------+------+------|                                               |------+------+------+------+------+------|
-//  *          |LShift|  F10 |  F1  |  F2  |  F3  | CapsL|                                               |      |      |      |      |      |      |
+//  *          |LShift|  F11 |  F12 |      |      |      |                                               |  ]   |   <  |  >   |  _   |  "   | LNG2 |
 //  *          |      |      |      |      |      |      |                                               |      |      |      |      |      |      |
 //  *          `----------------------------------+------+-------------.                   ,-------------+------+----------------------------------'
 //  *                                             |      | Space|  TAB |                   |      |      |      |
@@ -202,9 +193,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //  *                                             `--------------------'                   `--------------------'
 //  */
     [_FUNL] = LAYOUT(
-      _______, KC_F12 , KC_F7  , KC_F8  , KC_F9  , KC_PAUS,                                        _______, _______, _______, _______, _______, _______,
-      KC_LCTL, KC_F11 , KC_F4  , KC_F5  , KC_F6  , KC_PSCR,                                        _______, _______, _______, _______, _______, _______,
-      KC_LSFT, KC_F10 , KC_F1  , KC_F2  , KC_F3  , KC_CAPS,                                        _______, _______, _______, _______, _______, _______,
+      _______, KC_F1 , KC_F2  , KC_F3  , KC_F4  , KC_F5,                                        KC_EQL, KC_LPRN, KC_RPRN, _______, _______, LGUI(KC_L),
+      KC_LCTL, KC_F6 , KC_F7  , KC_F8  , KC_F9  , KC_F10,                                        KC_LBRC, KC_LCBR, KC_RCBR, KC_MINS, KC_QUOTE, _______,
+      KC_LSFT, KC_F11 , KC_F12  , _______  , _______  , LALT(KC_F7),                             KC_RBRC, KC_LABK, KC_RABK, KC_UNDS, KC_DQUO, KC_LNG2,
                                                    _______, KC_SPC , KC_TAB  ,    _______, _______, _______
     ),
 

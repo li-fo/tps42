@@ -28,10 +28,12 @@
 
 #define PS2_MOUSE_SCROLL_DIVISOR_H 4 
 #define PS2_MOUSE_SCROLL_DIVISOR_V 4 
+#define PS2_MOUSE_ROTATE 90 /* Compensate for East-facing device orientation. */
 #endif
 
 // caps word 
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_IDLE_TIMEOUT 5000
 
 /* Use I2C or Serial, not both */
 #define USE_SERIAL
@@ -41,3 +43,14 @@
 #define SPLIT_USB_TIMEOUT 2000
 
 #define EE_HANDS
+
+//# firmware down to size
+#define LAYER_STATE_8BIT  //  Tells QMK that keymap has fewer than 8 layers. Saves about 660 bytes. Remove if using more than 8 layers
+
+#define NO_ACTION_ONESHOT
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+
+// enabled for slave input problem(testing...)
+#define USB_POLLING_INTERVAL_MS 1
+#define QMK_KEYS_PER_SCAN 4
